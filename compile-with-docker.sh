@@ -33,7 +33,7 @@ fi
 # ---------------------------------------------
 if [[ "$(docker images -q $IMAGE)" == "" ]]; then
   echo "Building Docker image..."
-  docker build "$IMAGE" .
+  docker build -t "$IMAGE" .
 fi
 
 # ---------------------------------------------
