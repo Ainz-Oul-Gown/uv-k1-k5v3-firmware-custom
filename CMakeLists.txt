@@ -19,6 +19,13 @@ message("Build type: " ${CMAKE_BUILD_TYPE})
 
 enable_language(C ASM)
 
+# --- ДОБАВЛЕНО ДЛЯ РУССКОГО ЯЗЫКА ---
+add_compile_options(
+    -finput-charset=utf-8
+    -fexec-charset=cp1251
+)
+# ------------------------------------
+
 if(ENABLE_FEAT_F4HWN)
     if(NOT AUTHOR_STRING_1)
         set(AUTHOR_STRING_1 "EGZUMER")

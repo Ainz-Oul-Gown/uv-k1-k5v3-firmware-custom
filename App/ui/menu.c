@@ -45,14 +45,14 @@
 const t_menu_item MenuList[] =
 {
 //   text,          menu ID
-    {"Step",        MENU_STEP          },
-    {"Power",       MENU_TXP           }, // was "TXP"
+    {"ШАГ",         MENU_STEP          }, // было "Step"
+    {"МОЩН",        MENU_TXP           }, // было "Power"
     {"RxDCS",       MENU_R_DCS         }, // was "R_DCS"
     {"RxCTCS",      MENU_R_CTCS        }, // was "R_CTCS"
     {"TxDCS",       MENU_T_DCS         }, // was "T_DCS"
     {"TxCTCS",      MENU_T_CTCS        }, // was "T_CTCS"
-    {"TxODir",      MENU_SFT_D         }, // was "SFT_D"
-    {"TxOffs",      MENU_OFFSET        }, // was "OFFSET"
+    {"СДВИГ",       MENU_SFT_D         }, // было "TxODir"
+    {"СМЕЩ",        MENU_OFFSET        }, // было "TxOffs"
     {"W/N",         MENU_W_N           },
 #ifndef ENABLE_FEAT_F4HWN
     {"Scramb",      MENU_SCR           }, // was "SCR"
@@ -217,10 +217,10 @@ const char gSubMenu_W_N[][7] =
     "NARROW"
 };
 
-const char gSubMenu_OFF_ON[][4] =
+const char gSubMenu_OFF_ON[][5] =
 {
-    "OFF",
-    "ON"
+    "ВЫКЛ",
+    "ВКЛ"
 };
 
 const char gSubMenu_NA[4] =

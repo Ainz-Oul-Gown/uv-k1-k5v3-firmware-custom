@@ -70,8 +70,19 @@ void UI_PrintStringBuffer(const char *pString, uint8_t * buffer, uint32_t char_w
     const size_t Length = strlen(pString);
     const unsigned int char_spacing = char_width + 1;
     for (size_t i = 0; i < Length; i++) {
-        const unsigned int index = pString[i] - ' ' - 1;
-        if (pString[i] > ' ' && pString[i] < 127) {
+        uint8_t c = (uint8_t)pString[i];
+        unsigned int index = 0;
+        bool draw = false;
+
+        if (c > ' ' && c < 127) {
+            index = c - ' ' - 1; // Английские
+            draw = true;
+        } else if (c >= 192) {
+            index = c - 192 + 94; // Русские (CP1251)
+            draw = true;
+        }
+
+        if (draw) {
             const uint32_t offset = i * char_spacing + 1;
             memcpy(buffer + offset, font + index * char_width, char_width);
         }
@@ -88,10 +99,20 @@ void UI_PrintString(const char *pString, uint8_t Start, uint8_t End, uint8_t Lin
 
     for (i = 0; i < Length; i++)
     {
-        const unsigned int ofs   = (unsigned int)Start + (i * Width);
-        if (pString[i] > ' ' && pString[i] < 127)
-        {
-            const unsigned int index = pString[i] - ' ' - 1;
+        const unsigned int ofs = (unsigned int)Start + (i * Width);
+        uint8_t c = (uint8_t)pString[i];
+        unsigned int index = 0;
+        bool draw = false;
+
+        if (c > ' ' && c < 127) {
+            index = c - ' ' - 1; // Английские
+            draw = true;
+        } else if (c >= 192) {
+            index = c - 192 + 94; // Русские (CP1251)
+            draw = true;
+        }
+
+        if (draw) {
             memcpy(gFrameBuffer[Line + 0] + ofs, &gFontBig[index][0], 7);
             memcpy(gFrameBuffer[Line + 1] + ofs, &gFontBig[index][7], 7);
         }
@@ -210,46 +231,6 @@ void UI_DisplayFrequency(const char *string, uint8_t X, uint8_t Y, bool center)
     }
 }
 
-/*
-void UI_DisplayFrequency(const char *string, uint8_t X, uint8_t Y, bool center)
-{
-    const unsigned int char_width  = 13;
-    uint8_t           *pFb0        = gFrameBuffer[Y] + X;
-    uint8_t           *pFb1        = pFb0 + 128;
-    bool               bCanDisplay = false;
-
-    if (center) {
-        uint8_t len = 0;
-        for (const char *ptr = string; *ptr; ptr++)
-            if (*ptr != ' ') len++; // Ignores spaces for centering
-
-        X -= (len * char_width) / 2; // Centering adjustment
-        pFb0 = gFrameBuffer[Y] + X;
-        pFb1 = pFb0 + 128;
-    }
-
-    for (; *string; string++) {
-        char c = *string;
-        if (c == '-') c = '9' + 1; // Remap of '-' symbol
-
-        if (bCanDisplay || c != ' ') {
-            bCanDisplay = true;
-            if (c >= '0' && c <= '9' + 1) {
-                memcpy(pFb0 + 2, gFontBigDigits[c - '0'], char_width - 3);
-                memcpy(pFb1 + 2, gFontBigDigits[c - '0'] + char_width - 3, char_width - 3);
-            } else if (c == '.') {
-                memset(pFb1, 0x60, 3); // Replaces the three assignments
-                pFb0 += 3;
-                pFb1 += 3;
-                continue;
-            }
-        }
-        pFb0 += char_width;
-        pFb1 += char_width;
-    }
-}
-*/
-
 void UI_DrawPixelBuffer(uint8_t (*buffer)[128], uint8_t x, uint8_t y, bool black)
 {
     const uint8_t pattern = 1 << (y % 8);
@@ -269,28 +250,6 @@ static void sort(int16_t *a, int16_t *b)
 }
 
 #ifdef ENABLE_FEAT_F4HWN
-    /*
-    void UI_DrawLineDottedBuffer(uint8_t (*buffer)[128], int16_t x1, int16_t y1, int16_t x2, int16_t y2, bool black)
-    {
-        if(x2==x1) {
-            sort(&y1, &y2);
-            for(int16_t i = y1; i <= y2; i+=2) {
-                UI_DrawPixelBuffer(buffer, x1, i, black);
-            }
-        } else {
-            const int multipl = 1000;
-            int a = (y2-y1)*multipl / (x2-x1);
-            int b = y1 - a * x1 / multipl;
-
-            sort(&x1, &x2);
-            for(int i = x1; i<= x2; i+=2)
-            {
-                UI_DrawPixelBuffer(buffer, i, i*a/multipl +b, black);
-            }
-        }
-    }
-    */
-
     void PutPixel(uint8_t x, uint8_t y, bool fill) {
       UI_DrawPixelBuffer(gFrameBuffer, x, y, fill);
     }
@@ -306,6 +265,10 @@ static void sort(int16_t *a, int16_t *b)
       const uint8_t *p = (const uint8_t *)pString;
 
       while ((c = *p++) && c != '\0') {
+        if (c < 0x20 || c >= 0x20 + 96) { // Пропускаем неподдерживаемые символы (кириллицу)
+            x += 4;
+            continue;
+        }
         c -= 0x20;
         for (int i = 0; i < 3; ++i) {
           pixels = gFont3x5[c][i];
@@ -326,17 +289,7 @@ static void sort(int16_t *a, int16_t *b)
     void UI_DisplayUnlockKeyboard(uint8_t shift) {
         if (gEeprom.KEY_LOCK && gKeypadLocked > 0)
         {   // tell user how to unlock the keyboard
-            
-            //memcpy(gFrameBuffer[shift] + 2, gFontKeyLock, sizeof(gFontKeyLock));
             UI_PrintStringSmallBold("UNLOCK KEYBOARD", 12, 0, shift);
-            //memcpy(gFrameBuffer[shift] + 120, gFontKeyLock, sizeof(gFontKeyLock));
-
-            /*
-            for (uint8_t i = 12; i < 116; i++)
-            {
-                gFrameBuffer[shift][i] ^= 0xFF;
-            }
-            */
         }
     }
 
@@ -350,7 +303,7 @@ static void sort(int16_t *a, int16_t *b)
         return true;
     }
 #endif
-    
+
 void UI_DrawLineBuffer(uint8_t (*buffer)[128], int16_t x1, int16_t y1, int16_t x2, int16_t y2, bool black)
 {
     if(x2==x1) {
@@ -379,25 +332,9 @@ void UI_DrawRectangleBuffer(uint8_t (*buffer)[128], int16_t x1, int16_t y1, int1
     UI_DrawLineBuffer(buffer, x1,y2, x2,y2, black);
 }
 
-
 void UI_DisplayPopup(const char *string)
 {
     UI_DisplayClear();
-
-    // for(uint8_t i = 1; i < 5; i++) {
-    //  memset(gFrameBuffer[i]+8, 0x00, 111);
-    // }
-
-    // for(uint8_t x = 10; x < 118; x++) {
-    //  UI_DrawPixelBuffer(x, 10, true);
-    //  UI_DrawPixelBuffer(x, 46-9, true);
-    // }
-
-    // for(uint8_t y = 11; y < 37; y++) {
-    //  UI_DrawPixelBuffer(10, y, true);
-    //  UI_DrawPixelBuffer(117, y, true);
-    // }
-    // DrawRectangle(9,9, 118,38, true);
     UI_PrintString(string, 9, 118, 2, 8);
     UI_PrintStringSmallNormal("Press EXIT", 9, 118, 6);
 }
