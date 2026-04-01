@@ -3,22 +3,28 @@ name: Build Firmware
 on:
   push:
     branches: [ main ]
+  workflow_dispatch: # Позволяет запускать сборку вручную кнопкой
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-    - name: Compile firmware
-      run: |
-        chmod +x compile-with-docker.sh
-        ./compile-with-docker.sh
+      - name: Compile firmware
+        run: |
+          chmod +x compile-with-docker.sh
+          # Собираем версию Basic (она самая легкая для тестов)
+          ./compile-with-docker.sh Basic
 
-    - name: Upload firmware artifact
-      uses: actions/upload-artifact@v4
-      with:
-        name: firmware-artifact
-        path: compiled-firmware/f4hwn.packed.bin
+      - name: Upload firmware artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Russian-Firmware
+          # Скрипт обычно кладет результат в папку build/<Preset>
+          # Забираем все .bin и .packed.bin файлы
+          path: |
+            build/Basic/*.bin
+            build/Basic/*.hex
