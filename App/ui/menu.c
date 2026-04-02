@@ -406,7 +406,7 @@ const char gSubMenu_SCRAMBLER[][7] =
         "КНОПКИ+PTT"
     };
 
-    const char gSubMenu_SET_MET[][10] =
+    const char gSubMenu_SET_MET[2][10] =
     {
         "МАЛЕНЬКИЙ",
         "КЛАССИКА"
