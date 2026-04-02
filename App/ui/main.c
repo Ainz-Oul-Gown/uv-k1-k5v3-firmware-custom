@@ -1434,7 +1434,7 @@ void UI_DisplayMain(void)
                 const char pwr_short[][3] = {"Н1", "Н2", "Н3", "Н4", "Н5", "С", "В"};
                 //sprintf(String, "%s", pwr_short[currentPower]);
                 //UI_PrintStringSmallNormal(String, LCD_WIDTH + 42, 0, line + 1);
-                UI_PrintStringSmallNormal(pwr_short[currentPower], LCD_WIDTH + 42, 0, line + 1);
+                UI_PrintStringSmallNormal(pwr_short[currentPower], LCD_WIDTH + 36, 0, line + 1); //42
 
                 arrowPos = 38;
             }
@@ -1521,7 +1521,7 @@ void UI_DisplayMain(void)
             if (gSetting_set_gui)
             {
                 const char *bandWidthNames[] = {"Ш", "У", "У+"};
-                UI_PrintStringSmallNormal(bandWidthNames[vfoInfo->CHANNEL_BANDWIDTH + narrower], LCD_WIDTH + 70, 0, line + 1); //80
+                UI_PrintStringSmallNormal(bandWidthNames[vfoInfo->CHANNEL_BANDWIDTH + narrower], LCD_WIDTH + 66, 0, line + 1); //80
             }
             else
             {
@@ -1592,7 +1592,7 @@ void UI_DisplayMain(void)
            }
 
            if (gSetting_set_gui) {
-                UI_PrintStringSmallNormal(String, LCD_WIDTH + 88, 0, line + 1);
+                UI_PrintStringSmallNormal(String, LCD_WIDTH + 84, 0, line + 1); //92
            } else {
                 GUI_DisplaySmallest(String, 110, line == 0 ? 17 : 49, false, true);
            }

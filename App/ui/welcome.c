@@ -138,7 +138,7 @@ void UI_DisplayWelcome(void)
         // 0x0EC0
         PY25Q16_ReadBuffer(0x00A0D8, WelcomeString1, 16);
 
-        sprintf(WelcomeString2, "%u.%02uV %u%%",
+        sprintf(WelcomeString2, "%u.%02uВ %u%%",
                 gBatteryVoltageAverage / 100,
                 gBatteryVoltageAverage % 100,
                 BATTERY_VoltsToPercent(gBatteryVoltageAverage));
@@ -168,7 +168,7 @@ void UI_DisplayWelcome(void)
         {
             if(strlen(WelcomeString0) == 0)
             {
-                strcpy(WelcomeString0, "ЗДРАВСТВУЙ");
+                strcpy(WelcomeString0, "AINZOULGOWN");
             }
 
             if(strlen(WelcomeString1) == 0)

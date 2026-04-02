@@ -75,7 +75,7 @@ void UI_DisplayFM(void)
         sprintf(String, "A-SCAN(%u)", gFM_ChannelPosition);
         pPrintStr = String;
     } else {
-        pPrintStr = "M-SCAN";
+        pPrintStr = "СКАН";
     }
 
     UI_PrintString(pPrintStr, 0, 127, 3, 10); // memory, vfo, scan
