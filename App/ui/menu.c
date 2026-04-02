@@ -194,27 +194,27 @@ const uint8_t FIRST_HIDDEN_MENU_ITEM = MENU_F_LOCK;
 
 const char gSubMenu_TXP[][6] =
 {
-    "Польз",
-    "НИЗК 1",
-    "НИЗК 2",
-    "НИЗК 3",
-    "НИЗК 4",
-    "НИЗК 5",
-    "СРЕДН",
-    "ВЫСОК"
+    "USER",
+    "LOW 1",
+    "LOW 2",
+    "LOW 3",
+    "LOW 4",
+    "LOW 5",
+    "MID",
+    "HIGH"
 };
 
 const char gSubMenu_SFT_D[][4] =
 {
-    "ВЫКЛ",
+    "OFF",
     "+",
     "-"
 };
 
 const char gSubMenu_W_N[][7] =
 {
-    "ШИРОК",
-    "УЗКАЯ"
+    "WIDE",
+    "NARROW"
 };
 
 const char gSubMenu_OFF_ON[][5] =
@@ -239,9 +239,9 @@ const char* const gSubMenu_RXMode[] =
 #ifdef ENABLE_VOICE
     const char gSubMenu_VOICE[][4] =
     {
-        "ВЫКЛ",
-        "КИТАй",
-        "АНГЛ"
+        "OFF",
+        "CHI",
+        "ENG"
     };
 #endif
 
@@ -329,7 +329,7 @@ const char * const gSubMenu_F_LOCK[] =
 
 const char gSubMenu_RX_TX[][6] =
 {
-    "ВЫКЛ",
+    "OFF",
     "TX",
     "RX",
     "TX/RX"
@@ -360,7 +360,7 @@ const char gSubMenu_SET_NAV[][17] =
 #ifndef ENABLE_FEAT_F4HWN
 const char gSubMenu_SCRAMBLER[][7] =
 {
-    "ВЫКЛ",
+    "OFF",
     "2600Hz",
     "2700Hz",
     "2800Hz",
@@ -394,10 +394,10 @@ const char gSubMenu_SCRAMBLER[][7] =
 
     const char gSubMenu_SET_TOT[][7] =  // Use by SET_EOT too
     {
-        "ВЫКЛ",
-        "ЗВУК",
-        "ВИЗУАЛ",
-        "ВСЕ"
+        "OFF",
+        "SOUND",
+        "VISUAL",
+        "ALL"
     };
 
     const char gSubMenu_SET_LCK[][9] =
@@ -456,9 +456,9 @@ const t_sidefunction gSubMenu_SIDEFUNCTIONS[] =
 #ifdef ENABLE_FLASHLIGHT
     {"FLASH\nLIGHT",    ACTION_OPT_FLASHLIGHT},
 #endif
-    {"МОЩН",           ACTION_OPT_POWER},
-    {"МОНИТОР",         ACTION_OPT_MONITOR},
-    {"СКАН",            ACTION_OPT_SCAN},
+    {"POWER",           ACTION_OPT_POWER},
+    {"MONITOR",         ACTION_OPT_MONITOR},
+    {"SCAN",            ACTION_OPT_SCAN},
 #ifdef ENABLE_VOX
     {"VOX",             ACTION_OPT_VOX},
 #endif
@@ -466,7 +466,7 @@ const t_sidefunction gSubMenu_SIDEFUNCTIONS[] =
     {"ALARM",           ACTION_OPT_ALARM},
 #endif
 #ifdef ENABLE_FMRADIO
-    {"FM РАДИО",        ACTION_OPT_FM},
+    {"FM RADIO",        ACTION_OPT_FM},
 #endif
 #ifdef ENABLE_TX1750
     {"1750Hz",          ACTION_OPT_1750},
@@ -478,12 +478,12 @@ const t_sidefunction gSubMenu_SIDEFUNCTIONS[] =
     {"LOCK\nKEYPAD",    ACTION_OPT_KEYLOCK},
     {"VFO A\nVFO B",    ACTION_OPT_A_B},
     {"VFO\nMEM",        ACTION_OPT_VFO_MR},
-    {"МОД",            ACTION_OPT_SWITCH_DEMODUL},
+    {"MODE",            ACTION_OPT_SWITCH_DEMODUL},
 #ifdef ENABLE_BLMIN_TMP_OFF
     {"BLMIN\nTMP OFF",  ACTION_OPT_BLMIN_TMP_OFF},      //BackLight Minimum Temporay OFF
 #endif
 #ifdef ENABLE_FEAT_F4HWN
-    {"RX МОД",         ACTION_OPT_RXMODE},
+    {"RX MODE",         ACTION_OPT_RXMODE},
     {"MAIN ONLY",       ACTION_OPT_MAINONLY},
     {"PTT",             ACTION_OPT_PTT},
     {"WIDE\nNARROW",    ACTION_OPT_WN},
@@ -492,7 +492,7 @@ const t_sidefunction gSubMenu_SIDEFUNCTIONS[] =
         {"RxA",            ACTION_OPT_RXA},
     #endif
     #ifdef ENABLE_FEAT_F4HWN_RESCUE_OPS
-        {"МОЩН\nВЫСОК",    ACTION_OPT_POWER_HIGH},
+        {"POWER\nHIGH",    ACTION_OPT_POWER_HIGH},
         {"REMOVE\nOFFSET",  ACTION_OPT_REMOVE_OFFSET},
     #endif
 #endif
@@ -758,7 +758,7 @@ void UI_DisplayMenu(void)
             }
             else if(gSubMenuSelection < 61)
             {
-                sprintf(String, "%02dм:%02dс", (((gSubMenuSelection) * 5) / 60), (((gSubMenuSelection) * 5) % 60));
+                sprintf(String, "%02dm:%02ds", (((gSubMenuSelection) * 5) / 60), (((gSubMenuSelection) * 5) % 60));
                 //#if !defined(ENABLE_SPECTRUM) || !defined(ENABLE_FMRADIO)
                 //ST7565_Gauge(4, 1, 60, gSubMenuSelection);
                 gaugeLine = 4;
@@ -768,7 +768,7 @@ void UI_DisplayMenu(void)
             }
             else
             {
-                strcpy(String, "ВКЛ");
+                strcpy(String, "ON");
             }
 
             // Obsolete ???
@@ -795,7 +795,7 @@ void UI_DisplayMenu(void)
                 strcpy(String, gSubMenu_OFF_ON[0]);
             else
             {
-                sprintf(String, "%02dм:%02dс", ((gSubMenuSelection * 15) / 60), ((gSubMenuSelection * 15) % 60));
+                sprintf(String, "%02dm:%02ds", ((gSubMenuSelection * 15) / 60), ((gSubMenuSelection * 15) % 60));
                 //#if !defined(ENABLE_SPECTRUM) || !defined(ENABLE_FMRADIO)
                 //ST7565_Gauge(4, 1, 40, gSubMenuSelection);
                 gaugeLine = 4;
@@ -850,7 +850,7 @@ void UI_DisplayMenu(void)
         {
             if(gSubMenuSelection == MR_CHANNELS_MAX)
             {
-                UI_PrintString("НЕТ", menu_item_x1, menu_item_x2, 2, 8);
+                UI_PrintString("None", menu_item_x1, menu_item_x2, 2, 8);
                 already_printed = true;
                 break;
             }
@@ -924,7 +924,7 @@ void UI_DisplayMenu(void)
             break;
 
         case MENU_TOT:
-            sprintf(String, "%02dм:%02dс", (((gSubMenuSelection + 1) * 5) / 60), (((gSubMenuSelection + 1) * 5) % 60));
+            sprintf(String, "%02dm:%02ds", (((gSubMenuSelection + 1) * 5) / 60), (((gSubMenuSelection + 1) * 5) % 60));
             //#if !defined(ENABLE_SPECTRUM) || !defined(ENABLE_FMRADIO)
             //ST7565_Gauge(4, 5, 179, gSubMenuSelection);
             gaugeLine = 4;
@@ -942,11 +942,11 @@ void UI_DisplayMenu(void)
         case MENU_SC_REV:
             if(gSubMenuSelection == 0)
             {
-                strcpy(String, "СТОП");
+                strcpy(String, "STOP");
             }
             else if(gSubMenuSelection < 81)
             {
-                sprintf(String, "CARRIER\n%02dс:%03dмс", ((gSubMenuSelection * 250) / 1000), ((gSubMenuSelection * 250) % 1000));
+                sprintf(String, "CARRIER\n%02ds:%03dms", ((gSubMenuSelection * 250) / 1000), ((gSubMenuSelection * 250) % 1000));
                 //#if !defined(ENABLE_SPECTRUM) || !defined(ENABLE_FMRADIO)
                 //ST7565_Gauge(5, 1, 80, gSubMenuSelection);
                 gaugeLine = 5;
@@ -956,7 +956,7 @@ void UI_DisplayMenu(void)
             }
             else
             {
-                sprintf(String, "TIMEOUT\n%02dм:%02dс", (((gSubMenuSelection - 80) * 5) / 60), (((gSubMenuSelection - 80) * 5) % 60));
+                sprintf(String, "TIMEOUT\n%02dm:%02ds", (((gSubMenuSelection - 80) * 5) / 60), (((gSubMenuSelection - 80) * 5) % 60));
                 //#if !defined(ENABLE_SPECTRUM) || !defined(ENABLE_FMRADIO)
                 //ST7565_Gauge(5, 80, 104, gSubMenuSelection);
                 gaugeLine = 5;
@@ -971,15 +971,15 @@ void UI_DisplayMenu(void)
             break;
 
         case MENU_RP_STE:
-            sprintf(String, gSubMenuSelection == 0 ? gSubMenu_OFF_ON[0] : "%u*100мс", gSubMenuSelection);
+            sprintf(String, gSubMenuSelection == 0 ? gSubMenu_OFF_ON[0] : "%u*100ms", gSubMenuSelection);
             break;
 
         case MENU_LIST_CH:
         case MENU_S_LIST:
             if (gSubMenuSelection == MR_CHANNELS_LIST + 1)
-                strcpy(String, "ВСЕ");
+                strcpy(String, "ALL");
             else if (gSubMenuSelection == 0 && UI_MENU_GetCurrentMenuId() == MENU_LIST_CH)
-                strcpy(String, "ВЫКЛ");
+                strcpy(String, "OFF");
             else {
                 const char *name = gListName[gSubMenuSelection - 1];
                 
@@ -1016,11 +1016,11 @@ void UI_DisplayMenu(void)
             break;
 
         case MENU_D_HOLD:
-            sprintf(String, "%dс", gSubMenuSelection);
+            sprintf(String, "%ds", gSubMenuSelection);
             break;
 #endif
         case MENU_D_PRE:
-            sprintf(String, "%d*10мс", gSubMenuSelection);
+            sprintf(String, "%d*10ms", gSubMenuSelection);
             break;
 
         case MENU_PTT_ID:
@@ -1056,7 +1056,7 @@ void UI_DisplayMenu(void)
                 VERSION_STRING_2
             );
 #else
-            sprintf(String, "%u.%02uВ\n%u%%",
+            sprintf(String, "%u.%02uV\n%u%%",
                 gBatteryVoltageAverage / 100, gBatteryVoltageAverage % 100,
                 BATTERY_VoltsToPercent(gBatteryVoltageAverage));
 #endif
@@ -1085,7 +1085,7 @@ void UI_DisplayMenu(void)
 
                     writeXtalFreqCal(gSubMenuSelection, false);
 
-                    sprintf(String, "%d\n%u.%06u\nМГц",
+                    sprintf(String, "%d\n%u.%06u\nMHz",
                         gSubMenuSelection,
                         xtal_Hz / 1000000, xtal_Hz % 1000000);
                 }
@@ -1095,7 +1095,7 @@ void UI_DisplayMenu(void)
         case MENU_BATCAL:
         {
             const uint16_t vol = (uint32_t)gBatteryVoltageAverage * gBatteryCalibration[3] / gSubMenuSelection;
-            sprintf(String, "%u.%02uВ\n%u", vol / 100, vol % 100, gSubMenuSelection);
+            sprintf(String, "%u.%02uV\n%u", vol / 100, vol % 100, gSubMenuSelection);
             break;
         }
 
@@ -1123,7 +1123,7 @@ void UI_DisplayMenu(void)
             }
             else if(gSubMenuSelection < 121)
             {
-                sprintf(String, "%dч:%02dм", (gSubMenuSelection / 60), (gSubMenuSelection % 60));
+                sprintf(String, "%dh:%02dm", (gSubMenuSelection / 60), (gSubMenuSelection % 60));
                 //#if !defined(ENABLE_SPECTRUM) || !defined(ENABLE_FMRADIO)
                 //ST7565_Gauge(4, 1, 120, gSubMenuSelection);
                 gaugeLine = 4;
@@ -1291,7 +1291,7 @@ void UI_DisplayMenu(void)
             // only for SysInf
             if(UI_MENU_GetCurrentMenuId() == MENU_VOL)
             {
-                sprintf(edit, "%u.%02uВ %u%%",
+                sprintf(edit, "%u.%02uV %u%%",
                     gBatteryVoltageAverage / 100, gBatteryVoltageAverage % 100,
                     BATTERY_VoltsToPercent(gBatteryVoltageAverage)
                 );
@@ -1332,7 +1332,7 @@ void UI_DisplayMenu(void)
     }
 
     if ((UI_MENU_GetCurrentMenuId() == MENU_R_CTCS || UI_MENU_GetCurrentMenuId() == MENU_R_DCS) && gCssBackgroundScan)
-        UI_PrintString("СКАН", menu_item_x1, menu_item_x2, 4, 8);
+        UI_PrintString("SCAN", menu_item_x1, menu_item_x2, 4, 8);
 
 #ifdef ENABLE_DTMF_CALLING
     if (UI_MENU_GetCurrentMenuId() == MENU_D_LIST && gIsDtmfContactValid) {
@@ -1360,7 +1360,7 @@ void UI_DisplayMenu(void)
          UI_MENU_GetCurrentMenuId() == MENU_MEM_NAME ||
          UI_MENU_GetCurrentMenuId() == MENU_DEL_CH) && gAskForConfirmation)
     {   // display confirmation
-        char *pPrintStr = (gAskForConfirmation == 1) ? "ТОЧНО?" : "ЖДИ!";
+        char *pPrintStr = (gAskForConfirmation == 1) ? "SURE?" : "WAIT!";
         UI_PrintString(pPrintStr, menu_item_x1, menu_item_x2, 5, 8);
     }
 
