@@ -280,7 +280,7 @@ const char* const gSubMenu_PTT_ID[] =
     "APOLLO\nQUINDAR"
 };
 
-const char* const gSubMenu_PONMSG[][11] =
+const char gSubMenu_PONMSG[][11] =
 {
 #ifdef ENABLE_FEAT_F4HWN
     "ВСЕ",

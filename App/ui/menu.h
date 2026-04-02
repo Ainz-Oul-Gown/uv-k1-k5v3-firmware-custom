@@ -205,13 +205,13 @@ extern const char        gSubMenu_D_RSP[4][11];
 
 extern const char* const gSubMenu_PTT_ID[5];
 #ifdef ENABLE_FEAT_F4HWN
-    extern const char* const        gSubMenu_PONMSG[5][11];
+    extern const char        gSubMenu_PONMSG[5][11];
 #else
     extern const char        gSubMenu_PONMSG[4][10];
 #endif
 extern const char        gSubMenu_ROGER[3][6];
 extern const char        gSubMenu_RESET[2][4];
-extern const char* const gSubMenu_F_LOCK[F_LOCK_LEN];
+extern const char * const gSubMenu_F_LOCK[F_LOCK_LEN];
 extern const char        gSubMenu_RX_TX[4][6];
 extern const char        gSubMenu_BAT_TXT[3][12];
 extern const char        gSubMenu_BATTYP[5][12];
