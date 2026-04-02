@@ -167,7 +167,7 @@ extern const uint8_t FIRST_HIDDEN_MENU_ITEM;
 extern const t_menu_item MenuList[];
 
 extern const char        gSubMenu_TXP[8][10];
-extern const char        gSubMenu_SFT_D[3][4];
+extern const char        gSubMenu_SFT_D[3][5];
 extern const char        gSubMenu_W_N[2][8];
 extern const char        gSubMenu_OFF_ON[2][5];
 extern const char        gSubMenu_NA[4];
@@ -205,7 +205,7 @@ extern const char        gSubMenu_D_RSP[4][11];
 
 extern const char* const gSubMenu_PTT_ID[5];
 #ifdef ENABLE_FEAT_F4HWN
-    extern const char        gSubMenu_PONMSG[5][10];
+    extern const char* const        gSubMenu_PONMSG[5][10];
 #else
     extern const char        gSubMenu_PONMSG[4][10];
 #endif
