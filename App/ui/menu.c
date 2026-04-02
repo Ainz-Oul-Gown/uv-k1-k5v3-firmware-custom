@@ -1184,7 +1184,7 @@ void UI_DisplayMenu(void)
 
         case MENU_SET_MET:
         case MENU_SET_GUI:
-            strcpy(String, gSubMenuSelection[gSubMenuSelection]); // Same as SET_MET
+            strcpy(String, gSubMenu_SET_MET[gSubMenuSelection]); // Same as SET_MET
             break;
 
         #ifdef ENABLE_FEAT_F4HWN_AUDIO
