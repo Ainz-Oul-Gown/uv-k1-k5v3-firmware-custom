@@ -192,7 +192,7 @@ const t_menu_item MenuList[] =
 
 const uint8_t FIRST_HIDDEN_MENU_ITEM = MENU_F_LOCK;
 
-const char gSubMenu_TXP[][6] =
+const char gSubMenu_TXP[][10] =
 {
     "ПОЛЬЗОВ",
     "НИЗКАЯ 1",
@@ -204,14 +204,14 @@ const char gSubMenu_TXP[][6] =
     "ВЫСОКАЯ"
 };
 
-const char gSubMenu_SFT_D[][4] =
+const char gSubMenu_SFT_D[][5] =
 {
     "ВЫКЛ",
     "+",
     "-"
 };
 
-const char gSubMenu_W_N[][7] =
+const char gSubMenu_W_N[][8] =
 {
     "ШИРОКАЯ",
     "УЗКАЯ"
@@ -237,7 +237,7 @@ const char* const gSubMenu_RXMode[] =
 };
 
 #ifdef ENABLE_VOICE
-    const char gSubMenu_VOICE[][4] =
+    const char gSubMenu_VOICE[][7] =
     {
         "ВЫКЛ",
         "КИТАЙ",
@@ -264,7 +264,7 @@ const char* const gSubMenu_MDF[] =
 #ifdef ENABLE_DTMF_CALLING
 const char gSubMenu_D_RSP[][11] =
 {
-    "DO\nNOTHING",
+    "НИЧЕГО",
     "RING",
     "REPLY",
     "BOTH"
@@ -283,10 +283,10 @@ const char* const gSubMenu_PTT_ID[] =
 const char gSubMenu_PONMSG[][8] =
 {
 #ifdef ENABLE_FEAT_F4HWN
-    "ALL",
-    "SOUND",
+    "ВСЕ",
+    "ЗВУК",
 #else
-    "FULL",
+    "ПОЛН",
 #endif
     "СООБЩЕНИЕ",
     "ВОЛЬТАЖ",
@@ -303,7 +303,7 @@ const char gSubMenu_ROGER[][6] =
 const char gSubMenu_RESET[][4] =
 {
     "VFO",
-    "ALL"
+    "ВСЕ"
 };
 
 const char * const gSubMenu_F_LOCK[] =
@@ -335,7 +335,7 @@ const char gSubMenu_RX_TX[][6] =
     "TX/RX"
 };
 
-const char gSubMenu_BAT_TXT[][8] =
+const char gSubMenu_BAT_TXT[][12] =
 {
     "НИЧЕГО",
     "ВОЛЬТАЖ",
@@ -375,7 +375,7 @@ const char gSubMenu_SCRAMBLER[][7] =
 #endif
 
 #ifdef ENABLE_FEAT_F4HWN
-    const char gSubMenu_SET_PWR[][6] =
+    const char gSubMenu_SET_PWR[][12] =
     {
         "< 20м",
         "125м",
@@ -394,10 +394,10 @@ const char gSubMenu_SCRAMBLER[][7] =
 
     const char gSubMenu_SET_TOT[][7] =  // Use by SET_EOT too
     {
-        "OFF",
-        "SOUND",
-        "VISUAL",
-        "ALL"
+        "ВЫКЛ",
+        "ЗВУК",
+        "ВИЗУАЛ",
+        "ВСЕ"
     };
 
     const char gSubMenu_SET_LCK[][9] =
@@ -413,20 +413,20 @@ const char gSubMenu_SCRAMBLER[][7] =
     };
 
     #ifdef ENABLE_FEAT_F4HWN_AUDIO
-        const char gSubMenu_SET_AUD_FM[][6] =
+        const char gSubMenu_SET_AUD_FM[][9] =
         {
             "FLAT",
-            "CLEAN",
-            "MID",
-            "BOOST",
-            "MAX"
+            "ЧИСТЫЙ",
+            "СРЕДН",
+            "БУСТ",
+            "МАКС"
         };
 
-        const char gSubMenu_SET_AUD_AM[][6] =
+        const char gSubMenu_SET_AUD_AM[][8] =
         {
             "SHARP",
             "STOCK",
-            "OPEN"
+            "ОТКРЫТ"
         };
     #endif
 
@@ -452,13 +452,13 @@ const char gSubMenu_SCRAMBLER[][7] =
 
 const t_sidefunction gSubMenu_SIDEFUNCTIONS[] =
 {
-    {"NONE",            ACTION_OPT_NONE},
+    {"НИЧЕГО",            ACTION_OPT_NONE},
 #ifdef ENABLE_FLASHLIGHT
-    {"FLASH\nLIGHT",    ACTION_OPT_FLASHLIGHT},
+    {"ФОНАРИК",    ACTION_OPT_FLASHLIGHT},
 #endif
-    {"POWER",           ACTION_OPT_POWER},
-    {"MONITOR",         ACTION_OPT_MONITOR},
-    {"SCAN",            ACTION_OPT_SCAN},
+    {"МОЩНОСТЬ",           ACTION_OPT_POWER},
+    {"МОНИТОР",         ACTION_OPT_MONITOR},
+    {"СКАН",            ACTION_OPT_SCAN},
 #ifdef ENABLE_VOX
     {"VOX",             ACTION_OPT_VOX},
 #endif
@@ -475,7 +475,7 @@ const t_sidefunction gSubMenu_SIDEFUNCTIONS[] =
     {"REGA\nALARM",     ACTION_OPT_REGA_ALARM},
     {"REGA\nTEST",      ACTION_OPT_REGA_TEST},
 #endif
-    {"БЛОК\nКЛАВ",    ACTION_OPT_KEYLOCK},
+    {"БЛОК\nКЛАВЫ",    ACTION_OPT_KEYLOCK},
     {"VFO A\nVFO B",    ACTION_OPT_A_B},
     {"VFO\nMEM",        ACTION_OPT_VFO_MR},
     {"МОД",            ACTION_OPT_SWITCH_DEMODUL},
@@ -484,10 +484,10 @@ const t_sidefunction gSubMenu_SIDEFUNCTIONS[] =
 #endif
 #ifdef ENABLE_FEAT_F4HWN
     {"RX МОД",         ACTION_OPT_RXMODE},
-    {"MAIN ONLY",       ACTION_OPT_MAINONLY},
+    {"ГЛАВНАЯ",       ACTION_OPT_MAINONLY},
     {"PTT",             ACTION_OPT_PTT},
-    {"WIDE\nNARROW",    ACTION_OPT_WN},
-    {"MUTE",            ACTION_OPT_MUTE},
+    {"ШИРОКАЯ\nУЗКАЯ",    ACTION_OPT_WN},
+    {"ЗАГЛУШ",            ACTION_OPT_MUTE},
     #ifdef ENABLE_FEAT_F4HWN_AUDIO
         {"RxA",            ACTION_OPT_RXA},
     #endif
