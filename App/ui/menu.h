@@ -187,10 +187,10 @@ extern const char        gSubMenu_D_RSP[4][11];
 
 #ifdef ENABLE_FEAT_F4HWN
     extern const char           gSubMenu_SET_PWR[7][12];
-    extern const char* const    gSubMenu_SET_PTT[2][13];
+    extern const char           gSubMenu_SET_PTT[2][13];
     extern const char           gSubMenu_SET_TOT[4][7];
     extern const char           gSubMenu_SET_LCK[2][11];
-    extern const char* const    gSubMenu_SET_MET[2][13];
+    extern const char           gSubMenu_SET_MET[2][10];
     #ifdef ENABLE_FEAT_F4HWN_NARROWER
         extern const char    gSubMenu_SET_NFM[2][12];
     #endif
