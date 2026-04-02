@@ -211,7 +211,7 @@ void UI_DisplayWelcome(void)
             ST7565_BlitStatusLine();
         #endif
 
-        sprintf(WelcomeString3, "%s Edition", Edition);
+        sprintf(WelcomeString3, "AinzOulGown Edition", Edition);
         UI_PrintStringSmallNormal(WelcomeString3, 0, 127, 6);
 
 #else

@@ -68,11 +68,11 @@ const t_menu_item MenuList[] =
     {"УДАЛ.К",      MENU_DEL_CH        }, // was "DEL-CH"
     {"ИМЯ.К",      MENU_MEM_NAME      },
 
-    {"СПИСОК\nСКАН.",       MENU_S_LIST       },
+    {"СП.СКАН",       MENU_S_LIST       },
     {"ПРИОР",        MENU_S_PRI        },
     {"ПРИО.1",       MENU_S_PRI_CH_1   },
     {"ПРИО.2",       MENU_S_PRI_CH_2   },
-    {"РЕЖИМ\nСКАН.",      MENU_SC_REV        },
+    {"РЕЖ.СК",      MENU_SC_REV        },
 #ifndef ENABLE_FEAT_F4HWN
     #ifdef ENABLE_NOAA
         {"ПОГОДА",      MENU_NOAA_S    },
@@ -90,15 +90,15 @@ const t_menu_item MenuList[] =
     {"БАТАР.",      MENU_BAT_TXT       },
     {"МИКРОФ",         MENU_MIC           },
     {"ШК.МИК",      MENU_MIC_BAR       },
-    {"Отображ",      MENU_MDF           }, // was "MDF"
+    {"ОТОБР",      MENU_MDF           }, // was "MDF"
     {"ПРИВЕТ",      MENU_PONMSG        },
     {"ПОДСВ.",      MENU_ABR           }, // was "ABR"
-    {"МинЯрк",       MENU_ABR_MIN       },
-    {"МакЯрк",       MENU_ABR_MAX       },
+    {"МН,ЯРК",       MENU_ABR_MIN       },
+    {"МК.ЯРК",       MENU_ABR_MAX       },
     {"СВЕТ+",      MENU_ABR_ON_TX_RX  },
     {"ПИСК",        MENU_BEEP          },
 #ifdef ENABLE_VOICE
-    {"Голос",       MENU_VOICE         },
+    {"ГОЛОС",       MENU_VOICE         },
 #endif
     {"Roger",       MENU_ROGER         },
     {"STE",         MENU_STE           },
@@ -118,7 +118,7 @@ const t_menu_item MenuList[] =
     {"D ОТВ.",      MENU_D_RSP         },
     {"D УДЕР",      MENU_D_HOLD        },
 #endif
-    {"D ПРЕД\nЗАГРУЗ",      MENU_D_PRE         },
+    {"ПРДЗГР",      MENU_D_PRE         },
 #ifdef ENABLE_DTMF_CALLING
     {"D ДЕК.",      MENU_D_DCD         },
     {"D ЛИСТ",      MENU_D_LIST        },
@@ -131,14 +131,14 @@ const t_menu_item MenuList[] =
 #endif
     {"VOX",         MENU_VOX           },
 #ifdef ENABLE_FEAT_F4HWN
-    {"SysInf",      MENU_VOL           }, // was "VOL"
+    {"СИСИНФ",      MENU_VOL           }, // was "VOL"
 #else
-    {"BatVol",      MENU_VOL           }, // was "VOL"
+    {"АКК(V)",      MENU_VOL           }, // was "VOL"
 #endif
     {"Rx Мод",      MENU_TDR           },
     {"ШУМ",         MENU_SQL           },
 #ifdef ENABLE_FEAT_F4HWN
-    {"НАСТР.\nМОЩН.",      MENU_SET_PWR       },
+    {"МОЩН.",      MENU_SET_PWR       },
     {"PTT",      MENU_SET_PTT       },
     {"TOT",      MENU_SET_TOT       },
     {"EOT",      MENU_SET_EOT       },
@@ -161,7 +161,7 @@ const t_menu_item MenuList[] =
     {"ГРОМК",      MENU_SET_VOL       },
 #endif
 #ifdef ENABLE_FEAT_F4HWN_RESCUE_OPS
-    {"НАСТР.\nКНОПОК",      MENU_SET_KEY       },
+    {"КНОПК",      MENU_SET_KEY       },
 #endif
 #ifdef ENABLE_NOAA
     {"ПОГОДА",      MENU_NOAA_S    },
@@ -175,15 +175,15 @@ const t_menu_item MenuList[] =
     {"Tx 350",      MENU_350TX         }, // was "350TX"
     {"Tx 500",      MENU_500TX         }, // was "500TX"
 #endif
-    {"350 вкл",      MENU_350EN         }, // was "350EN"
+    {"350ВКЛ",      MENU_350EN         }, // was "350EN"
 #ifndef ENABLE_FEAT_F4HWN
     {"СКРЕМБ",      MENU_SCREN         }, // was "SCREN"
 #endif
 #ifdef ENABLE_F_CAL_MENU
-    {"КАЛИБР.\nЧАСТОТ",      MENU_F_CALI        }, // reference xtal calibration
+    {"КЛБР.Ч",      MENU_F_CALI        }, // reference xtal calibration
 #endif
-    {"КАЛИБH.\nАККУМ.",      MENU_BATCAL        }, // battery voltage calibration
-    {"ТИП\nАККУМ.",     MENU_BATTYP        }, // battery type 1600/2200mAh
+    {"КЛ.АКК",      MENU_BATCAL        }, // battery voltage calibration
+    {"ТИПАКК",     MENU_BATTYP        }, // battery type 1600/2200mAh
     {"НАВИГ",      MENU_SET_NAV       }, // set navigation (LEFT / RIGHT or UP / DOWN)
     {"СБРОС",       MENU_RESET         }, // might be better to move this to the hidden menu items ?
 
@@ -194,7 +194,7 @@ const uint8_t FIRST_HIDDEN_MENU_ITEM = MENU_F_LOCK;
 
 const char gSubMenu_TXP[][17] =
 {
-    "ПОЛЬЗОВАТЕЛЬСКАЯ",
+    "КАСТОМ",
     "НИЗКАЯ 1",
     "НИЗКАЯ 2",
     "НИЗКАЯ 3",
@@ -256,8 +256,8 @@ const char* const gSubMenu_MDF[] =
 #ifdef ENABLE_ALARM
     const char gSubMenu_AL_MOD[][12] =
     {
-        "ТОЛЬКО ЗВУК",
-        "ТРЕВОГА TX"
+        "ТОЛЬКО\nЗВУК",
+        "ТРЕВОГА\nTX"
     };
 #endif
 
@@ -288,8 +288,8 @@ const char* const gSubMenu_PONMSG[][11] =
 #else
     "ПОЛНАЯ",
 #endif
-    "СООБЩЕНИЕ",
-    "НАПРЯЖЕНИЕ",
+    "СООБЩ.",
+    "НАПРЯЖ.",
     "НИЧЕГО"
 };
 
@@ -308,7 +308,7 @@ const char gSubMenu_RESET[][4] =
 
 const char * const gSubMenu_F_LOCK[] =
 {
-    "СТАНДАРТ+\n137-174\n400-470",
+    "СТАНДАРТ\n137-174\n400-470",
     "FCC HAM\n144-148\n420-450",
 #ifdef ENABLE_FEAT_F4HWN_CA
     "CA HAM\n144-148\n430-450",
@@ -338,7 +338,7 @@ const char gSubMenu_RX_TX[][6] =
 const char gSubMenu_BAT_TXT[][12] =
 {
     "НИЧЕГО",
-    "ВОЛЬТАЖ",
+    "НАПРЯЖ.",
     "ПРОЦЕНТЫ"
 };
 
@@ -388,7 +388,7 @@ const char gSubMenu_SCRAMBLER[][7] =
 
     const char* const gSubMenu_SET_PTT[][13] =
     {
-        "КЛАССИЧЕСКИЙ",
+        "КЛАССИКА",
         "ОДНО\nНАЖАТИЕ"
     };
 
@@ -409,7 +409,7 @@ const char gSubMenu_SCRAMBLER[][7] =
     const char * const gSubMenu_SET_MET[][13] =
     {
         "МАЛЕНЬКИЙ",
-        "КЛАССИЧЕСКИЙ"
+        "КЛАССИКА"
     };
 
     #ifdef ENABLE_FEAT_F4HWN_AUDIO
@@ -434,7 +434,7 @@ const char gSubMenu_SCRAMBLER[][7] =
         const char gSubMenu_SET_NFM[][12] =
         {
             "УЗКАЯ",
-            "СВЕРХУЗКАЯ"
+            "СВЕРХУЗК."
         };
     #endif
 
@@ -456,7 +456,7 @@ const t_sidefunction gSubMenu_SIDEFUNCTIONS[] =
 #ifdef ENABLE_FLASHLIGHT
     {"ФОНАРИК",    ACTION_OPT_FLASHLIGHT},
 #endif
-    {"МОЩНОСТЬ",           ACTION_OPT_POWER},
+    {"МОЩН.",           ACTION_OPT_POWER},
     {"МОНИТОР",         ACTION_OPT_MONITOR},
     {"СКАН",            ACTION_OPT_SCAN},
 #ifdef ENABLE_VOX
@@ -475,10 +475,10 @@ const t_sidefunction gSubMenu_SIDEFUNCTIONS[] =
     {"REGA\nТРЕВОГА",     ACTION_OPT_REGA_ALARM},
     {"REGA\nТЕСТ",      ACTION_OPT_REGA_TEST},
 #endif
-    {"БЛОКИРОВКА\nКНОПОК",    ACTION_OPT_KEYLOCK},
+    {"БЛОКИРОВ.\nКНОПОК",    ACTION_OPT_KEYLOCK},
     {"VFO A\nVFO B",    ACTION_OPT_A_B},
-    {"VFO\nnПАМЯТЬ",        ACTION_OPT_VFO_MR},
-    {"МОДУЛЯЦИЯ",            ACTION_OPT_SWITCH_DEMODUL},
+    {"VFO\nПАМЯТЬ",        ACTION_OPT_VFO_MR},
+    {"МОДУЛЯЦ.",            ACTION_OPT_SWITCH_DEMODUL},
 #ifdef ENABLE_BLMIN_TMP_OFF
     {"ВРЕМЯ ОТКЛ.\n ПОДСВЕТКИ",  ACTION_OPT_BLMIN_TMP_OFF},      //BackLight Minimum Temporay OFF
 #endif
