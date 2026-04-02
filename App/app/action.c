@@ -546,10 +546,11 @@ void ACTION_RxMode(void)
 
     cycle = !cycle;
 
-    // ДОБАВЛЕНА КОМАНДА СОХРАНЕНИЯ В EEPROM
-    gRequestSaveSettings = true;
+    ACTION_Update(); // Эта штука сбросит gSaveRxMode в false
 
-    ACTION_Update();
+    // А мы тут же возвращаем его обратно и даем пинок на сохранение в EEPROM:
+    gSaveRxMode = true;
+    gRequestSaveSettings = true;
 }
 
 void ACTION_MainOnly(void)
@@ -559,14 +560,21 @@ void ACTION_MainOnly(void)
     static uint8_t cb = 0;
 
     if (cycle) {
+        // Возвращаем старые настройки
         gEeprom.DUAL_WATCH = dw;
         gEeprom.CROSS_BAND_RX_TX = cb;
+
+        // Сохраняем в память только при возврате в нормальный режим!
+        gRequestSaveSettings = true;
     } else {
+        // Включаем временный режим Main Only
         dw = gEeprom.DUAL_WATCH;
         cb = gEeprom.CROSS_BAND_RX_TX;
 
         gEeprom.DUAL_WATCH = 0;
         gEeprom.CROSS_BAND_RX_TX = 0;
+
+        // Здесь не сохраняем, чтобы не затереть EEPROM нулями
     }
 
     cycle = !cycle;
