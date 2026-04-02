@@ -133,7 +133,7 @@ const t_menu_item MenuList[] =
 #ifdef ENABLE_FEAT_F4HWN
     {"СИСИНФ",      MENU_VOL           }, // was "VOL"
 #else
-    {"АКК(V)",      MENU_VOL           }, // was "VOL"
+    {"АКК(В)",      MENU_VOL           }, // was "VOL"
 #endif
     {"Rx Мод",      MENU_TDR           },
     {"ШУМ",         MENU_SQL           },
@@ -145,7 +145,7 @@ const t_menu_item MenuList[] =
     {"КОНТР",      MENU_SET_CTR       },
     {"ИНВЕРС",      MENU_SET_INV       },
     {"БЛОК.",      MENU_SET_LCK       },
-    {"S-МЕТР",      MENU_SET_MET       },
+    {"S-METP",      MENU_SET_MET       },
     {"ИНТЕРФ",      MENU_SET_GUI       },
 #ifdef ENABLE_FEAT_F4HWN_AUDIO    
     {"RxЗВУК",      MENU_SET_AUD       },
@@ -406,7 +406,7 @@ const char gSubMenu_SCRAMBLER[][7] =
         "КНОПКИ+PTT"
     };
 
-    const char gSubMenu_SET_MET[2][10] =
+    const char gSubMenu_SET_MET[][10] =
     {
         "МАЛЕНЬКИЙ",
         "КЛАССИКА"
