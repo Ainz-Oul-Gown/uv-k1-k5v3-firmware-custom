@@ -17,7 +17,7 @@ jobs:
         run: |
           chmod +x compile-with-docker.sh
           # Собираем версию Basic (она самая легкая для тестов)
-          ./compile-with-docker.sh Basic
+          ./compile-with-docker.sh AinzOulGown
 
       - name: Upload firmware artifact
         uses: actions/upload-artifact@v4
