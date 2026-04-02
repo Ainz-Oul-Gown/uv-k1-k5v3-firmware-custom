@@ -135,7 +135,7 @@ const t_menu_item MenuList[] =
 #else
     {"BatVol",      MENU_VOL           }, // was "VOL"
 #endif
-    {"RxMode",      MENU_TDR           },
+    {"Rx Мод",      MENU_TDR           },
     {"ШУМ",         MENU_SQL           },
 #ifdef ENABLE_FEAT_F4HWN
     {"SetPwr",      MENU_SET_PWR       },
@@ -194,27 +194,27 @@ const uint8_t FIRST_HIDDEN_MENU_ITEM = MENU_F_LOCK;
 
 const char gSubMenu_TXP[][6] =
 {
-    "USER",
-    "LOW 1",
-    "LOW 2",
-    "LOW 3",
-    "LOW 4",
-    "LOW 5",
-    "MID",
-    "HIGH"
+    "ПОЛЬЗОВ",
+    "НИЗКАЯ 1",
+    "НИЗКАЯ 2",
+    "НИЗКАЯ 3",
+    "НИЗКАЯ 4",
+    "НИЗКАЯ 5",
+    "СРЕДНЯЯ",
+    "ВЫСОКАЯ"
 };
 
 const char gSubMenu_SFT_D[][4] =
 {
-    "OFF",
+    "ВЫКЛ",
     "+",
     "-"
 };
 
 const char gSubMenu_W_N[][7] =
 {
-    "WIDE",
-    "NARROW"
+    "ШИРОКАЯ",
+    "УЗКАЯ"
 };
 
 const char gSubMenu_OFF_ON[][5] =
@@ -239,17 +239,17 @@ const char* const gSubMenu_RXMode[] =
 #ifdef ENABLE_VOICE
     const char gSubMenu_VOICE[][4] =
     {
-        "OFF",
-        "CHI",
-        "ENG"
+        "ВЫКЛ",
+        "КИТАЙ",
+        "АНГЛ"
     };
 #endif
 
 const char* const gSubMenu_MDF[] =
 {
     "FREQ",
-    "CHANNEL\nNUMBER",
-    "NAME",
+    "НОМЕР\nКАНАЛА",
+    "ИМЯ",
     "NAME\n+\nFREQ"
 };
 
@@ -273,7 +273,7 @@ const char gSubMenu_D_RSP[][11] =
 
 const char* const gSubMenu_PTT_ID[] =
 {
-    "OFF",
+    "ВЫКЛ",
     "UP CODE",
     "DOWN CODE",
     "UP+DOWN\nCODE",
@@ -288,14 +288,14 @@ const char gSubMenu_PONMSG[][8] =
 #else
     "FULL",
 #endif
-    "MESSAGE",
-    "VOLTAGE",
-    "NONE"
+    "СООБЩЕНИЕ",
+    "ВОЛЬТАЖ",
+    "НИЧЕГО"
 };
 
 const char gSubMenu_ROGER[][6] =
 {
-    "OFF",
+    "ВЫКЛ",
     "ROGER",
     "MDC"
 };
@@ -329,7 +329,7 @@ const char * const gSubMenu_F_LOCK[] =
 
 const char gSubMenu_RX_TX[][6] =
 {
-    "OFF",
+    "ВЫКЛ",
     "TX",
     "RX",
     "TX/RX"
@@ -337,9 +337,9 @@ const char gSubMenu_RX_TX[][6] =
 
 const char gSubMenu_BAT_TXT[][8] =
 {
-    "NONE",
-    "VOLTAGE",
-    "PERCENT"
+    "НИЧЕГО",
+    "ВОЛЬТАЖ",
+    "ПРОЦЕНТЫ"
 };
 
 const char gSubMenu_BATTYP[][12] =
@@ -360,7 +360,7 @@ const char gSubMenu_SET_NAV[][17] =
 #ifndef ENABLE_FEAT_F4HWN
 const char gSubMenu_SCRAMBLER[][7] =
 {
-    "OFF",
+    "ВЫКЛ",
     "2600Hz",
     "2700Hz",
     "2800Hz",
@@ -377,10 +377,10 @@ const char gSubMenu_SCRAMBLER[][7] =
 #ifdef ENABLE_FEAT_F4HWN
     const char gSubMenu_SET_PWR[][6] =
     {
-        "< 20m",
-        "125m",
-        "250m",
-        "500m",
+        "< 20м",
+        "125м",
+        "250м",
+        "500м",
         "1",
         "2",
         "5"
@@ -466,7 +466,7 @@ const t_sidefunction gSubMenu_SIDEFUNCTIONS[] =
     {"ALARM",           ACTION_OPT_ALARM},
 #endif
 #ifdef ENABLE_FMRADIO
-    {"FM RADIO",        ACTION_OPT_FM},
+    {"FM РАДИО",        ACTION_OPT_FM},
 #endif
 #ifdef ENABLE_TX1750
     {"1750Hz",          ACTION_OPT_1750},
@@ -475,15 +475,15 @@ const t_sidefunction gSubMenu_SIDEFUNCTIONS[] =
     {"REGA\nALARM",     ACTION_OPT_REGA_ALARM},
     {"REGA\nTEST",      ACTION_OPT_REGA_TEST},
 #endif
-    {"LOCK\nKEYPAD",    ACTION_OPT_KEYLOCK},
+    {"БЛОК\nКЛАВ",    ACTION_OPT_KEYLOCK},
     {"VFO A\nVFO B",    ACTION_OPT_A_B},
     {"VFO\nMEM",        ACTION_OPT_VFO_MR},
-    {"MODE",            ACTION_OPT_SWITCH_DEMODUL},
+    {"МОД",            ACTION_OPT_SWITCH_DEMODUL},
 #ifdef ENABLE_BLMIN_TMP_OFF
     {"BLMIN\nTMP OFF",  ACTION_OPT_BLMIN_TMP_OFF},      //BackLight Minimum Temporay OFF
 #endif
 #ifdef ENABLE_FEAT_F4HWN
-    {"RX MODE",         ACTION_OPT_RXMODE},
+    {"RX МОД",         ACTION_OPT_RXMODE},
     {"MAIN ONLY",       ACTION_OPT_MAINONLY},
     {"PTT",             ACTION_OPT_PTT},
     {"WIDE\nNARROW",    ACTION_OPT_WN},
@@ -682,7 +682,7 @@ void UI_DisplayMenu(void)
             }
             else
             {
-                sprintf(String, "%s\n%sW", gSubMenu_TXP[gSubMenuSelection], gSubMenu_SET_PWR[gSubMenuSelection - 1]);
+                sprintf(String, "%s\n%sВт", gSubMenu_TXP[gSubMenuSelection], gSubMenu_SET_PWR[gSubMenuSelection - 1]);
             }
             break;
 
@@ -1136,7 +1136,7 @@ void UI_DisplayMenu(void)
 
 #ifdef ENABLE_FEAT_F4HWN
         case MENU_SET_PWR:
-            sprintf(String, "%s\n%sW", gSubMenu_TXP[gSubMenuSelection + 1], gSubMenu_SET_PWR[gSubMenuSelection]);
+            sprintf(String, "%s\n%sВт", gSubMenu_TXP[gSubMenuSelection + 1], gSubMenu_SET_PWR[gSubMenuSelection]);
             break;
     
         case MENU_SET_PTT:
