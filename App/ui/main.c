@@ -682,8 +682,8 @@ void UI_DisplayMain(void)
 #ifndef ENABLE_FEAT_F4HWN
     if (gEeprom.KEY_LOCK && gKeypadLocked > 0)
     {   // tell user how to unlock the keyboard
-        UI_PrintString("Long press #", 0, LCD_WIDTH, 1, 8);
-        UI_PrintString("to unlock",    0, LCD_WIDTH, 3, 8);
+        UI_PrintString("Зажмите #", 0, LCD_WIDTH, 1, 8);
+        UI_PrintString("для разблок",    0, LCD_WIDTH, 3, 8);
         ST7565_BlitFullScreen();
         return;
     }
@@ -1082,12 +1082,12 @@ void UI_DisplayMain(void)
                     uint8_t xStart, xDisplay;
 
                     if (countList == MR_CHANNELS_LIST + 1) {
-                        displayStr = "ALL";
+                        displayStr = "ВСЕ";
                         xStart = 113;
                         xDisplay = 115;
                     } 
                     else if (countList == 0) {
-                        displayStr = "OFF";
+                        displayStr = "ВЫКЛ";
                         xStart = 113;
                         xDisplay = 115;
                     } 
@@ -1440,7 +1440,7 @@ void UI_DisplayMain(void)
             }
             else
             {
-                const char pwr_long[][5] = {"LOW1", "LOW2", "LOW3", "LOW4", "LOW5", "MID", "HIGH"};
+                const char pwr_long[][6] = {"НИЗК1", "НИЗК2", "НИЗК3", "НИЗК4", "НИЗ5", "СРЕДН", "ВЫСОК"};
                 //sprintf(String, "%s", pwr_long[currentPower]);
                 //GUI_DisplaySmallest(String, 24, line == 0 ? 17 : 49, false, true);
                 GUI_DisplaySmallest(pwr_long[currentPower], 24, line == 0 ? 17 : 49, false, true);
@@ -1525,18 +1525,18 @@ void UI_DisplayMain(void)
             }
             else
             {
-                const char *bandWidthNames[] = {"WIDE", "NAR", "NAR+"};
+                const char *bandWidthNames[] = {"ШИР", "УЗК", "УЗК+"};
                 GUI_DisplaySmallest(bandWidthNames[vfoInfo->CHANNEL_BANDWIDTH + narrower], 91, line == 0 ? 17 : 49, false, true);
             }
         #else
             if (gSetting_set_gui)
             {
-                const char *bandWidthNames[] = {"W", "N"};
+                const char *bandWidthNames[] = {"Ш", "У"};
                 UI_PrintStringSmallNormal(bandWidthNames[vfoInfo->CHANNEL_BANDWIDTH], LCD_WIDTH + 80, 0, line + 1);
             }
             else
             {
-                const char *bandWidthNames[] = {"WIDE", "NAR"};
+                const char *bandWidthNames[] = {"ШИР", "УЗК"};
                 GUI_DisplaySmallest(bandWidthNames[vfoInfo->CHANNEL_BANDWIDTH], 91, line == 0 ? 17 : 49, false, true);
             }
         #endif
@@ -1586,9 +1586,9 @@ void UI_DisplayMain(void)
         */
         if (isMainVFO) {
            if (gMonitor) {
-                strcpy(String, "MONI");
+                strcpy(String, "МОНИТ");
            } else {
-                sprintf(String, "SQL%d", gEeprom.SQUELCH_LEVEL);
+                sprintf(String, "ШУМ%d", gEeprom.SQUELCH_LEVEL);
            }
 
            if (gSetting_set_gui) {
@@ -1711,7 +1711,7 @@ void UI_DisplayMain(void)
 
                 center_line = CENTER_LINE_CHARGE_DATA;
 
-                sprintf(String, "Charge %u.%02uV %u%%",
+                sprintf(String, "ЗАРЯД %u.%02uВ %u%%",
                     gBatteryVoltageAverage / 100, gBatteryVoltageAverage % 100,
                     BATTERY_VoltsToPercent(gBatteryVoltageAverage));
                 UI_PrintStringSmallNormal(String, 2, 0, 3);

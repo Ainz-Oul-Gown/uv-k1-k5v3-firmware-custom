@@ -166,7 +166,7 @@ enum
 extern const uint8_t FIRST_HIDDEN_MENU_ITEM;
 extern const t_menu_item MenuList[];
 
-extern const char        gSubMenu_TXP[8][10];
+extern const char        gSubMenu_TXP[8][17];
 extern const char        gSubMenu_SFT_D[3][5];
 extern const char        gSubMenu_W_N[2][8];
 extern const char        gSubMenu_OFF_ON[2][5];
@@ -179,20 +179,20 @@ extern const char* const gSubMenu_RXMode[4];
 #endif
 extern const char* const gSubMenu_MDF[4];
 #ifdef ENABLE_ALARM
-    extern const char    gSubMenu_AL_MOD[2][8];
+    extern const char    gSubMenu_AL_MOD[2][12];
 #endif
 #ifdef ENABLE_DTMF_CALLING
 extern const char        gSubMenu_D_RSP[4][11];
 #endif
 
 #ifdef ENABLE_FEAT_F4HWN
-    extern const char    gSubMenu_SET_PWR[7][12];
-    extern const char    gSubMenu_SET_PTT[2][8];
-    extern const char    gSubMenu_SET_TOT[4][7];
-    extern const char    gSubMenu_SET_LCK[2][9];
-    extern const char    gSubMenu_SET_MET[2][8];
+    extern const char           gSubMenu_SET_PWR[7][12];
+    extern const char* const    gSubMenu_SET_PTT[2][13];
+    extern const char           gSubMenu_SET_TOT[4][7];
+    extern const char           gSubMenu_SET_LCK[2][11];
+    extern const char* const    gSubMenu_SET_MET[2][13];
     #ifdef ENABLE_FEAT_F4HWN_NARROWER
-        extern const char    gSubMenu_SET_NFM[2][9];
+        extern const char    gSubMenu_SET_NFM[2][12];
     #endif
     #ifdef ENABLE_FEAT_F4HWN_RESCUE_OPS
         extern const char gSubMenu_SET_KEY[][9];
@@ -205,7 +205,7 @@ extern const char        gSubMenu_D_RSP[4][11];
 
 extern const char* const gSubMenu_PTT_ID[5];
 #ifdef ENABLE_FEAT_F4HWN
-    extern const char* const        gSubMenu_PONMSG[5][10];
+    extern const char* const        gSubMenu_PONMSG[5][11];
 #else
     extern const char        gSubMenu_PONMSG[4][10];
 #endif

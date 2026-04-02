@@ -26,5 +26,5 @@ jobs:
           # Скрипт обычно кладет результат в папку build/<Preset>
           # Забираем все .bin и .packed.bin файлы
           path: |
-            build/Basic/*.bin
-            build/Basic/*.hex
+            build/AinzOulGown/*.bin
+            build/AinzOulGown/*.hex

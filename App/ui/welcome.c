@@ -145,14 +145,14 @@ void UI_DisplayWelcome(void)
 
         if (gEeprom.POWER_ON_DISPLAY_MODE == POWER_ON_DISPLAY_MODE_VOLTAGE)
         {
-            strcpy(WelcomeString0, "VOLTAGE");
+            strcpy(WelcomeString0, "НАПРЯЖЕНИЕ");
             strcpy(WelcomeString1, WelcomeString2);
         }
         else if(gEeprom.POWER_ON_DISPLAY_MODE == POWER_ON_DISPLAY_MODE_ALL)
         {
             if(strlen(WelcomeString0) == 0 && strlen(WelcomeString1) == 0)
             {
-                strcpy(WelcomeString0, "WELCOME");
+                strcpy(WelcomeString0, "ЗДРАВСТВУЙ");
                 strcpy(WelcomeString1, WelcomeString2);
             }
             else if(strlen(WelcomeString0) == 0 || strlen(WelcomeString1) == 0)
@@ -168,7 +168,7 @@ void UI_DisplayWelcome(void)
         {
             if(strlen(WelcomeString0) == 0)
             {
-                strcpy(WelcomeString0, "WELCOME");
+                strcpy(WelcomeString0, "ЗДРАВСТВУЙ");
             }
 
             if(strlen(WelcomeString1) == 0)

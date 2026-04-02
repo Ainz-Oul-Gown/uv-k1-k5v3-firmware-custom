@@ -54,9 +54,9 @@ void UI_DisplayFM(void)
     //UI_PrintStringSmallNormal(String, 127 - 4*7, 0, 6);
 
     if (gAskToSave) {
-        pPrintStr = "SAVE?";
+        pPrintStr = "СОХРАНИТЬ?";
     } else if (gAskToDelete) {
-        pPrintStr = "DEL?";
+        pPrintStr = "УДАЛИТЬ?";
     } else if (gFM_ScanState == FM_SCAN_OFF) {
         if (gEeprom.FM_IsMrMode) {
             sprintf(String, "MR(CH%02u)", gEeprom.FM_SelectedChannel + 1);
