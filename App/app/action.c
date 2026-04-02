@@ -545,6 +545,10 @@ void ACTION_RxMode(void)
     }
 
     cycle = !cycle;
+
+    // ДОБАВЛЕНА КОМАНДА СОХРАНЕНИЯ В EEPROM
+    gRequestSaveSettings = true;
+
     ACTION_Update();
 }
 
