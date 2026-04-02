@@ -1431,7 +1431,7 @@ void UI_DisplayMain(void)
 
             if (gSetting_set_gui)
             {
-                const char pwr_short[][3] = {"L1", "L2", "L3", "L4", "L5", "M", "H"};
+                const char pwr_short[][3] = {"Н1", "Н2", "Н3", "Н4", "Н5", "С", "В"};
                 //sprintf(String, "%s", pwr_short[currentPower]);
                 //UI_PrintStringSmallNormal(String, LCD_WIDTH + 42, 0, line + 1);
                 UI_PrintStringSmallNormal(pwr_short[currentPower], LCD_WIDTH + 42, 0, line + 1);
@@ -1520,8 +1520,8 @@ void UI_DisplayMain(void)
 
             if (gSetting_set_gui)
             {
-                const char *bandWidthNames[] = {"W", "N", "N+"};
-                UI_PrintStringSmallNormal(bandWidthNames[vfoInfo->CHANNEL_BANDWIDTH + narrower], LCD_WIDTH + 80, 0, line + 1);
+                const char *bandWidthNames[] = {"Ш", "У", "У+"};
+                UI_PrintStringSmallNormal(bandWidthNames[vfoInfo->CHANNEL_BANDWIDTH + narrower], LCD_WIDTH + 70, 0, line + 1); //80
             }
             else
             {
@@ -1586,13 +1586,13 @@ void UI_DisplayMain(void)
         */
         if (isMainVFO) {
            if (gMonitor) {
-                strcpy(String, "МОНИТ");
+                strcpy(String, "МОНИТОР");
            } else {
                 sprintf(String, "ШУМ%d", gEeprom.SQUELCH_LEVEL);
            }
 
            if (gSetting_set_gui) {
-                UI_PrintStringSmallNormal(String, LCD_WIDTH + 98, 0, line + 1);
+                UI_PrintStringSmallNormal(String, LCD_WIDTH + 88, 0, line + 1);
            } else {
                 GUI_DisplaySmallest(String, 110, line == 0 ? 17 : 49, false, true);
            }
