@@ -17,7 +17,7 @@ jobs:
         run: |
           chmod +x compile-with-docker.sh
           # Собираем версию Basic (она самая легкая для тестов)
-          ./compile-with-docker.sh AinzOulGown
+          ./compile-with-docker.sh Basic
 
       - name: Upload firmware artifact
         uses: actions/upload-artifact@v4
@@ -26,5 +26,5 @@ jobs:
           # Скрипт обычно кладет результат в папку build/<Preset>
           # Забираем все .bin и .packed.bin файлы
           path: |
-            build/AinzOulGown/*.bin
-            build/AinzOulGown/*.hex
+            build/Basic/*.bin
+            build/Basic/*.hex
