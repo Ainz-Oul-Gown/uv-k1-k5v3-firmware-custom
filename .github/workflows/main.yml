@@ -17,7 +17,7 @@ jobs:
         run: |
           chmod +x compile-with-docker.sh
           # Собираем версию Basic (она самая легкая для тестов)
-          ./compile-with-docker.sh Basic
+          ./compile-with-docker.sh All
 
       - name: Upload firmware artifact
         uses: actions/upload-artifact@v4
@@ -26,5 +26,5 @@ jobs:
           # Скрипт обычно кладет результат в папку build/<Preset>
           # Забираем все .bin и .packed.bin файлы
           path: |
-            build/Basic/*.bin
-            build/Basic/*.hex
+            build/All/*.bin
+            build/All/*.hex
